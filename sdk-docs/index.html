@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <title>AgreeSDK docs</title>
+  <!-- <link rel="stylesheet" href="https://unpkg.com/docute@3/dist/docute.css"> -->
+  <link rel="stylesheet" href="./lib/css/docute.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- <script src="https://unpkg.com/docute@3/dist/docute.js"></script> -->
+  <script src="./lib/js/docute.js"></script>
+  <script>
+    docute.init({
+      toc: `
+- [路由管理](/sdk-docs/activity-manager)
+- [父窗口与交易iframe之间通讯](/sdk-docs/communication-iframe)
+- [流程管理](/sdk-docs/flow-manager)
+- [焦点管理](/sdk-docs/focus-manager)
+- [数据管理](/sdk-docs/store-manager)
+- [页面管理](/sdk-docs/page-manager-vue)
+- [服务管理](/sdk-docs/services-manager)
+- [同步交易管理](/sdk-docs/sync-flow-manager)
+- [校验管理](/sdk-docs/validator-manager-vue)
+- [热键管理](/sdk-docs/hotkeys)
+- [事件总线](/sdk-docs/ab-core)
+`
+    })
+  </script>
+</body>
+
+</html>
