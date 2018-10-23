@@ -8,7 +8,7 @@
 
 ### 📁 [SDK文档](https://afexteam.github.io/sdk-docs/index.html)
 
-###  📲 [移动组件库使用文档](https://afexteam.github.io/aui-m-docs/)
+###  📲 [移动组件库使用文档](https://afexteam.github.io/aui-m-docs/index.html)
 
 ###  📱 [移动组件库演示文档](https://afexteam.github.io/aui-m-demo/)
 
