@@ -1,4 +1,4 @@
-# ab-manager-hotkeys
+# ab-manager-hotkeys@热键管理
 
 js绑定热键组合，方便操作，提升效率
 

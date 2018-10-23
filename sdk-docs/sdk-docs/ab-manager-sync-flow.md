@@ -1,4 +1,4 @@
-# ab-manager-sync-flow
+# ab-manager-sync-flow@同步交易管理
 
 支持交易同步打开，包括但不限于在dialog弹出时，阻止后续逻辑执行，在完成dialog是才执行。
 

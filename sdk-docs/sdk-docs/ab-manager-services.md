@@ -1,4 +1,4 @@
-# ab-manager-services
+# ab-manager-services@服务管理
 
 管理页面调用的服务，包括向服务器发送请求以及外设调用。
 
@@ -41,6 +41,10 @@ import ServicesNames from '@/common/services-manager/services-names.js'
 ServicesManager.getService(ServicesNames.LOGINSERVICE, {name: 'Jack'}).then(res => {
     // 回调函数
 });
+//当需要修改头信息 可传入第三个参数
+ServicesManager.getService(ServicesNames.LOGINSERVICE, {name: 'Jack'}, {headers:{"X-AmebaCloud-Token":""}}).then(res => {
+    // 回调函数
+});
 ```
 
 3.services-plugin.js解析：
@@ -65,7 +69,10 @@ export default [
             // todo
             return param;
         },
-        config: Host
+        customConfig: function(config) { // function - 自定义参数类型
+            // todo
+            return config;
+        }
     }
     // ...
 ]
@@ -104,7 +111,36 @@ customParam: function(param) {
     height: 180
 }
 ```
+3.2 自定义config形式(customConfig)
 
+如果设置customConfig属性，表示自定义config形式，最终的config类型就是customConfig函数的返回值。
+
+例3 —— 自定义config形式：
+
+```js
+import ServicesNames from '@/common/services-manager/services-names.js'
+
+ServicesManager.getService(ServicesNames.LOGINSERVICE, {name: 'Jack', age: 20}, {headers:{"X-AmebaCloud-Token":""}}).then(res => {
+    // 回调函数
+});
+```
+
+**services-plugin.js**
+```js
+customConfig: function(config) {
+    config.timeout = 15000;
+    return config;
+}
+```
+
+最终传参为：
+
+```js
+{
+    headers: {"X-AmebaCloud-Token":""},
+    timeout: 15000
+}
+```
 4.错误处理
 
 首先先定义错误处理函数

@@ -1,4 +1,4 @@
-# ab-manager-websocket
+# ab-manager-websocket@websocket连接
 
 
 1. 引入
@@ -87,7 +87,7 @@
 
 |参数|说明|类型|默认值|
 |-----|:-----:|:-----:|:-----:|
-|url|websocket服务端接口地址,必填|String||
+|url|websocket服务端接口.可以直接传入,也可以在config配置socket字段|String||
 |pingTimeOut|每隔15秒发送一次心跳请求|Number|15000|
 |pongTimeOut|ping消息发送之后,10秒内没收到后端消息便会认为连接断开|Numebr|10000|
 |reconnectTimeOut|尝试重连的间隔时间|Number|2000|

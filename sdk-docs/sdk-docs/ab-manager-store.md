@@ -1,4 +1,4 @@
-# ab-manager-store
+# ab-manager-store@数据管理
 
 **自动化构架Vuex**
 
