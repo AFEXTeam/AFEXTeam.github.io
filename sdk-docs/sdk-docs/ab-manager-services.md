@@ -10,11 +10,11 @@
 import { ServicesManager } from 'ab-manager-services'
 // 此处services-plugin.js以及services-names.js文件需要手动创建
 // 每条服务的配置
-import ServicesPlugin from '@/common/services-manager/services-plugin.js' // 相对路径 
+import ServicesPlugin from '@/common/managers/services-manager/services-plugin.js' // 相对路径 
 // 定义服务名的常量
-import ServicesNames from '@/common/services-manager/services-names.js' // 相对路径
+import ServicesNames from '@/common/managers/services-manager/services-names.js' // 相对路径
 // 定义统一错误处理信息的函数
-import ServicesError from './common/services-manager/services-error.js' // 相对路径
+import ServicesError from './common/managers/services-manager/services-error.js' // 相对路径
 // 在初始化的时候将plugin传入ServicesManager
 Vue.use(ServicesManager, {plugin: ServicesPlugin, errorHandle: ServicesError});
 ```
@@ -22,21 +22,17 @@ Vue.use(ServicesManager, {plugin: ServicesPlugin, errorHandle: ServicesError});
 2.发送请求：
 
 ```js
-// 方法一：
-ServicesManager.getService(serviceName, parameter).then(res => {
+ServicesManager.getService(serviceName[, parameter, config]).then(res => {
     // 回调函数
 });
-
-// 方法二：
-ServicesManager.getService(ServiceName).customParam(...args).customConfig(configs).done().then(res => {})
 ```
 
-> `customParam`和`customConfig`为service-plugin.js中自定的方法，支持链式调用。
+> `customParam`和`customConfig`为service-plugin.js中自定的方法，数组中参数可省略，两个参数分对应两个方法的入参。
 
 例：
 
 ```js
-import ServicesNames from '@/common/services-manager/services-names.js'
+import ServicesNames from '@/common/managers/services-manager/services-names.js'
 
 ServicesManager.getService(ServicesNames.LOGINSERVICE, {name: 'Jack'}).then(res => {
     // 回调函数
@@ -53,8 +49,8 @@ ServicesManager.getService(ServicesNames.LOGINSERVICE, {name: 'Jack'}, {headers:
 
 ```js
 // 二者选一或者不选 分别是外设服务和常规服务端请求，在里面配置自定义参数
-import Device from "@/common/services-manager/config-device"; // 相对路径
-import Host from "@/common/services-manager/config-host"; // 相对路径
+import Device from "@/common/managers/services-manager/config-device"; // 相对路径
+import Host from "@/common/managers/services-manager/config-host"; // 相对路径
 ```
 
 例：
@@ -87,7 +83,7 @@ export default [
 例3 —— 自定义参数形式：
 
 ```js
-import ServicesNames from '@/common/services-manager/services-names.js'
+import ServicesNames from '@/common/managers/services-manager/services-names.js'
 
 ServicesManager.getService(ServicesNames.LOGINSERVICE, {name: 'Jack', age: 20}).then(res => {
     // 回调函数
@@ -118,7 +114,7 @@ customParam: function(param) {
 例3 —— 自定义config形式：
 
 ```js
-import ServicesNames from '@/common/services-manager/services-names.js'
+import ServicesNames from '@/common/managers/services-manager/services-names.js'
 
 ServicesManager.getService(ServicesNames.LOGINSERVICE, {name: 'Jack', age: 20}, {headers:{"X-AmebaCloud-Token":""}}).then(res => {
     // 回调函数
