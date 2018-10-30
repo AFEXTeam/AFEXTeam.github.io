@@ -9,14 +9,14 @@
 ```js
 import { ServicesManager } from 'ab-manager-services'
 // 此处services-plugin.js以及services-names.js文件需要手动创建
-// 每条服务的配置
-import ServicesPlugin from '@/common/managers/services-manager/services-plugin.js' // 相对路径 
+// 服务的配置
+import ServicesPlugin, { serviceConfig as Config } from '@/common/managers/services-manager/services-plugin.js' // 相对路径 
 // 定义服务名的常量
 import ServicesNames from '@/common/managers/services-manager/services-names.js' // 相对路径
 // 定义统一错误处理信息的函数
 import ServicesError from './common/managers/services-manager/services-error.js' // 相对路径
 // 在初始化的时候将plugin传入ServicesManager
-Vue.use(ServicesManager, {plugin: ServicesPlugin, errorHandle: ServicesError});
+Vue.use(ServicesManager, {plugin: ServicesPlugin, errorHandle: ServicesError, config: Config});
 ```
 
 2.发送请求：
@@ -56,6 +56,16 @@ import Host from "@/common/managers/services-manager/config-host"; // 相对路�
 例：
 
 ```js
+// 可在此处配置全局token相关内容
+let serviceConfig = {
+    timeout: 2000,
+    headers: {}
+};
+
+export {
+    serviceConfig
+}
+
 export default [
     {
         type: 'get', // string - 请求类型
@@ -178,3 +188,10 @@ services-error.js参数
 | -------- | --- | --- |
 | scope | - | 当前作用域 |
 | opts | - | 准备处理的数据 |
+
+**配置参数`ABConfig`:**
+
+| 参数     | 类型 | 说明 | 默认值 |
+| -------- | --- | --- | --- |
+| ABConig.hostIp | array/string | 发送请求的IP | http://127.0.0.1:8080 |
+| ABConig.MAX_COUNT | number | 请求重发的最大次数 | 0 |

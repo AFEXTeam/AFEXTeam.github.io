@@ -27,9 +27,18 @@ DeviceManager.getDevice(type,optArg).then(res => {
     // todo
 });
 ```
+> **DeviceManager Events**
+
+|事件|说明|参数|
+|------|:------:|:-----:|
+|getDeviceList|获取外设列表|-|
+|setDeviceList|设置外设配置|deviceConfig:外设配置信息|
+|getDevice|调用外设|type:设备类型;optArg:调用外设所需参数|
 
 | 参数     | 类型 | 说明 | 默认值 | 可选值 |
 | -------- | --- | --- | --- | --- |
 | deviceConfig | object | 外设配置信息 | — | — |
 | type | string | 设备类型 | — | 'NIc'/'Ic'/'Id'/'Msf'/'Fp'/'Pin'/'Gwq'/'Prt' |
 | optArg | object | 调用外设所需参数 | — | — |
+
+

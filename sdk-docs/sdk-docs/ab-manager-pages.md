@@ -1,4 +1,4 @@
-# ab-manager-page@页面管理
+# ab-manager-pages@页面管理
 
 对交易页面进行管理。
 
@@ -7,7 +7,7 @@
 ```js
     // main.js
 
-    import { PageManager } from 'ab-manager-page'
+    import { PageManager } from 'ab-manager-pages'
     import Pages from '@/pages.js' // 此位置为pages.js的相对路径
     Vue.use(PageManager, { pages: Pages })
 ```

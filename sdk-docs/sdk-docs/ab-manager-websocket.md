@@ -3,21 +3,25 @@
 
 1. 引入
 ```js
-    import WebsocketManager from 'ab-manager-websocket';
+    import { WebsocketManager } from 'ab-manager-websocket';
 ```
 2. 事件使用说明
 ```js
     // 实例
+    // 注：如果在config.js文件已经配置websocket的url,则在实例化时可以不传url
     let WebsocketManager = new WebsocketManager({
-        url: 'ws://xxxxxxx'
+        url: 'ws://xxxxxxx',
+        id: "oid_1"
     });
 ```
 
 > 连接建立时触发
 ```js
     WebsocketManager.onopen = function () {
-        console.log('connect success');
-        WebsocketManager.send('hello server');
+        WebsocketManager.send({
+            id: "oid_1",
+            data: "onopen success"
+        });
     }
 ```
 > 通信发生错误时触发
@@ -35,7 +39,7 @@
 > 连接关闭时触发
 ```js
     WebsocketManager.onclose = function (e) {
-        console.log('close...);
+        console.log('close...');
     }
 ```
 > 发生重连触发
@@ -47,7 +51,10 @@
 3. 方法使用说明
 > send 发送消息
 ```js
-    WebsocketManager.send('hello server');
+    WebsocketManager.send({
+        id: "",
+        data: ""
+    });
 ```
 > close 关闭连接
 ```js
@@ -61,7 +68,7 @@
 
 5. 使用案例
 ```js
-    import WebsocketManager from "ab-manager-websocket"
+    import { WebsocketManager } from "ab-manager-websocket"
     export default {
     name: "HelloWorld",
     data() {
@@ -70,43 +77,41 @@
         };
     },
     mounted() {
-        this.ws = new WebsocketManager({"url":"ws://127.0.0.1:50010/ws/broadcast"});
-        let initObj = {
-                type: "init", //init->初始化操作,wspush->推送消息 ...
-                id: "oid_1", //init->为本机id,wspush->推送的目标id ...
-                data:"推送的消息内容" //init->无,wspush->推送的消息内容 ...
-            };
+        this.ws = new WebsocketManager({"url":"ws://127.0.0.1:50010/ws/broadcast", id: "oid_1"});
         let _this = this;
         this.ws.onopen = function(evt) {
-            console.log("Connection open ...", evt);
-            _this.ws.send(JSON.stringify(initObj));
+            _this.ws.send({
+                id: "oid_1",
+                data: "onopen success"
+            });
         };
     }
 ```
 > **WebsocketManager Attributes**
 
-|参数|说明|类型|默认值|
-|-----|:-----:|:-----:|:-----:|
-|url|websocket服务端接口.可以直接传入,也可以在config配置socket字段|String||
-|pingTimeOut|每隔15秒发送一次心跳请求|Number|15000|
-|pongTimeOut|ping消息发送之后,10秒内没收到后端消息便会认为连接断开|Numebr|10000|
-|reconnectTimeOut|尝试重连的间隔时间|Number|2000|
-|pingMsg|ping消息内容|String|"heartbeat"|
-|forbidReconnect|是否进行重连操作|Boolean|false|
+| 参数             | 说明                                                          | 类型    | 默认值      |
+| ---------------- | :-----------------------------------------------------------: | :-----: | :---------: |
+| url              | websocket服务端接口.可以直接传入,也可以在config配置socket字段 | String  | - |
+| id              | websocket连接唯一标识 | String/number  | - |
+| pingTimeOut      | 每隔15秒发送一次心跳请求                                      | Number  | 15000       |
+| pongTimeOut      | ping消息发送之后,10秒内没收到后端消息便会认为连接断开         | Numebr  | 10000       |
+| reconnectTimeOut | 尝试重连的间隔时间                                            | Number  | 2000        |
+| pingMsg          | ping消息内容                                                  | String  | "heartbeat" |
+| forbidReconnect  | 是否进行重连操作                                              | Boolean | false       |
 
 > **WebsocketManager Events**
 
-|事件名|说明|参数|
-|-----|:-----:|:-----:|
-|onopen|连接建立时触发|event|
-|onerror|通信发生错误时触发|event|
-|onmessage|客户端接收服务端数据时触发|event|
-|onclose|连接关闭时触发|event|
-|onreconnect|发生重连触发|event|
+| 事件名      | 说明                       | 参数  |
+| ----------- | :------------------------:| :---: |
+| onopen      | 连接建立时触发             | event |
+| onerror     | 通信发生错误时触发         | event |
+| onmessage   | 客户端接收服务端数据时触发  | event |
+| onclose     | 连接关闭时触发             | event |
+| onreconnect | 发生重连触发               | event |
 
 > **WebsocketManager Methods**
 
-|方法名|说明|参数|
-|-----|:-----:|:------:|
-|send|发送消息|消息的内容|
-|close|关闭连接|-|
+| 方法名 | 说明     | 参数       |
+| ------ | :------: | :--------: |
+| send   | 发送消息 | 消息的内容 |
+| close  | 关闭连接 | -          |

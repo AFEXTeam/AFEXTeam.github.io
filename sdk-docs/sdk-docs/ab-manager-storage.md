@@ -33,11 +33,10 @@ StorageManager.removeStore("name");
 StorageManager.removeStore();
 ```
 
+> **StorageManager Events**
 
-
-## 参数
-
-| 参数     | 类型 | 说明 | 可选值 |
-| -------- | --- | --- | --- |
-| key | string | 保存的变量名 | - |
-| value | - | 保存的数据 | - |
+| 事件        | 说明               | 参数                                            |
+| :-----------: | :------------------: | :-------------: |
+| setStore    | 存储数据           | key:保存的变量名;value:需要保存的数据           |
+| getStore    | 获取已经存储的数据 | key:保存的变量名                                |
+| removeStore | 清空存储的数据     | key:保存的变量名;不传参数则清空所有已保存的数据 |
