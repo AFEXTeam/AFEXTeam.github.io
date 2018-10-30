@@ -1,6 +1,12 @@
 # ab-manager-websocket@websocket连接
 
-
+必要配置:
+**configjs**
+```js
+let ABConfig = {
+    socketIp: ["ws://xxx"]
+}
+```
 1. 引入
 ```js
     import { WebsocketManager } from 'ab-manager-websocket';
@@ -8,9 +14,7 @@
 2. 事件使用说明
 ```js
     // 实例
-    // 注：如果在config.js文件已经配置websocket的url,则在实例化时可以不传url
     let WebsocketManager = new WebsocketManager({
-        url: 'ws://xxxxxxx',
         id: "oid_1"
     });
 ```
@@ -91,7 +95,7 @@
 
 | 参数             | 说明                                                          | 类型    | 默认值      |
 | ---------------- | :-----------------------------------------------------------: | :-----: | :---------: |
-| url              | websocket服务端接口.可以直接传入,也可以在config配置socket字段 | String  | - |
+| url              | websocket服务端接口在config配置socketIp字段 | Array  | - |
 | id              | websocket连接唯一标识 | String/number  | - |
 | pingTimeOut      | 每隔15秒发送一次心跳请求                                      | Number  | 15000       |
 | pongTimeOut      | ping消息发送之后,10秒内没收到后端消息便会认为连接断开         | Numebr  | 10000       |

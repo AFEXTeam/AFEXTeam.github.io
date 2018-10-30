@@ -35,5 +35,8 @@ DeviceSetting.isAdsConnect();
 **订阅客户端原生层当ads启动后回调的js方法**
 
 ```js
-DeviceSetting.deviceSubscribe()
+// main.js
+DeviceSetting.deviceSubscribe(function(msg,res){
+    // todo
+})
 ```
