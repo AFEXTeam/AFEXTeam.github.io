@@ -53,6 +53,7 @@
     DeviceSetting.deviceUnsubscribe()
 ```
 **Events promise函数**
+
 |事件名|说明|参数|
 |-----|:----:|:----:|
 |getDeviceList|获取外设列表|-|
