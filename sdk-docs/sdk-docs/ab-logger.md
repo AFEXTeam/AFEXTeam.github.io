@@ -19,7 +19,7 @@ FrameLogger.error("错误", new Error("This is a error!"));
 TradeLogger.info("在XXX文件的XX位置", "这是一个信息");
 ```
 
-| 参数     | 类型 | 说明 |
-| -------- | --- | --- |
+| 参数    | 类型   | 说明               |
+| ------- | ------ | ------------------ |
 | message | string | 日志的相关描述信息 |
-| info | - | 具体日志内容 |
+| info    | -      | 具体日志内容       |

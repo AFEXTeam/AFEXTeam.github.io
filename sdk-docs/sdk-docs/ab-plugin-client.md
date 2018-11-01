@@ -3,38 +3,48 @@
 1.引入
 
 ```js
-import { Client } from "ab-plugin-client"
+    import { Client } from "ab-plugin-client"
 ```
 
-2.使用
+2.事件方法使用说明
 
-**关闭客户端**
+> **关闭客户端**
 
 ```js
-Client.closeClient();
+    Client.closeClient().then(res=>{
+        // todo
+    });
 ```
 
-**最小化客户端**
+> **最小化客户端**
 
 ```js
-Client.setMinimized();
+    Client.setMinimized().then(res=>{
+        // todo
+    });
 ```
 
-**最大化客户端**
+> **最大化客户端**
 
 ```js
-Client.setMaxmized();
+    Client.setMaxmized().then(res=>{
+        // todo
+    });
 ```
 
-**获取客户端oid**
+> **获取客户端oid**
 
 ```js
-let oid = Client.getOid();
+    let oid = ""
+    Client.getOid().then(res=>{
+        // todo
+        oid = res.oid;
+    });
 ```
-
-| 事件     | 说明 | 参数 |
-| -------- | --- | --- |
-| closeClient | 关闭客户端 | - |
-| setMinimized | 最小化客户端 | - |
-| setMaxmized | 最大化客户端 | - |
-| getOid | 获取客户端iod | - |
+**Events promise函数**
+| 事件         | 说明          | 参数 |
+| ------------ | :-------------: | :----: |
+| closeClient  | 关闭客户端    | -    |
+| setMinimized | 最小化客户端  | -    |
+| setMaxmized  | 最大化客户端  | -    |
+| getOid       | 获取客户端iod | -    |

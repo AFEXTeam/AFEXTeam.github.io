@@ -9,7 +9,9 @@ import { Embed } from "ab-plugin-embed"
 2.使用
 
 ```js
-Embed.sendEmbed();
+Embed.sendEmbed().then(res=>{
+    // todo
+});
 ```
 
 | 事件     | 说明 | 参数 |

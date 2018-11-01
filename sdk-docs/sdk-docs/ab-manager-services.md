@@ -45,6 +45,14 @@ ServicesManager.getService(ServicesNames.LOGINSERVICE, {name: 'Jack'}, {headers:
 
 3.services-plugin.js解析：
 
+可以加入配置：
+
+```js
+// 二者选一或者不选 分别是外设服务和常规服务端请求，在里面配置自定义参数
+import Device from "@/common/managers/services-manager/config-device"; // 相对路径
+import Host from "@/common/managers/services-manager/config-host"; // 相对路径
+```
+
 例：
 
 ```js
