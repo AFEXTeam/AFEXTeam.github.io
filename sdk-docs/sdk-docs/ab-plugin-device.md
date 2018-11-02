@@ -24,6 +24,14 @@
     });
 ```
 
+> **获取abc 监听adssocket端口**
+
+```js
+    DeviceSetting.getAbcSocketPort().then(res=>{
+        // todo
+    });
+```
+
 > **获取adssocket端口**
 
 ```js
