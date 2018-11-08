@@ -15,17 +15,18 @@ let ABConfig = {
 ```js
     // 实例
     let WebsocketManager = new WebsocketManager({
-        id: "oid_1"
+        id: "oid_1",
+        data: {
+            app: '',
+            branch: ''
+        }
     });
 ```
 
 > 连接建立时触发
 ```js
     WebsocketManager.onopen = function () {
-        WebsocketManager.send({
-            id: "oid_1",
-            data: "onopen success"
-        });
+        // todo
     }
 ```
 > 通信发生错误时触发
@@ -56,8 +57,11 @@ let ABConfig = {
 > send 发送消息
 ```js
     WebsocketManager.send({
-        id: "",
-        data: ""
+        scope: '',
+        destId: '',
+        branch: '',
+        app: '',
+        content: ''
     });
 ```
 > close 关闭连接
@@ -81,27 +85,42 @@ let ABConfig = {
         };
     },
     mounted() {
-        this.ws = new WebsocketManager({"url":"ws://127.0.0.1:50010/ws/broadcast", id: "oid_1"});
+        this.ws = new WebsocketManager({
+            "url":"ws://127.0.0.1:50010/ws/broadcast",
+            id: "oid_1",
+            data: {
+                app: 'app1',
+                branch: 'boss1'
+            }
+        });
         let _this = this;
         this.ws.onopen = function(evt) {
             _this.ws.send({
-                id: "oid_1",
-                data: "onopen success"
+                scope: '0',
+                destId: 'oid_1',
+                branch: 'boss2',
+                app: ['app1'],
+                content: 'open success'
             });
         };
     }
 ```
 > **WebsocketManager Attributes**
 
-| 参数             | 说明                                                          | 类型    | 默认值      |
-| ---------------- | :-----------------------------------------------------------: | :-----: | :---------: |
-| url              | websocket服务端接口在config配置socketIp字段 | Array  | - |
-| id              | websocket连接唯一标识 | String/number  | - |
-| pingTimeOut      | 每隔15秒发送一次心跳请求                                      | Number  | 15000       |
-| pongTimeOut      | ping消息发送之后,10秒内没收到后端消息便会认为连接断开         | Numebr  | 10000       |
-| reconnectTimeOut | 尝试重连的间隔时间                                            | Number  | 2000        |
-| pingMsg          | ping消息内容                                                  | String  | "heartbeat" |
-| forbidReconnect  | 是否进行重连操作                                              | Boolean | false       |
+| 参数             | 说明                                                          | 类型    | 默认值      | 可选值 |
+| ---------------- | :-----------------------------------------------------------: | :-----: | :---------: | :---------: | 
+| url              | websocket服务端接口在config配置socketIp字段 | Array | - | - |
+| id              | websocket连接唯一标识 | String/number | - | - |
+| pingTimeOut      | 每隔15秒发送一次心跳请求 | Number | 15000 | - |
+| pongTimeOut      | ping消息发送之后,10秒内没收到后端消息便会认为连接断开 | Numebr | 10000 | - |
+| reconnectTimeOut | 尝试重连的间隔时间 | Number  | 2000 | - |
+| pingMsg          | ping消息内容 | String  | "heartbeat" | "heartbeat" |
+| forbidReconnect  | 是否进行重连操作 | Boolean | false | - |
+| scope  | 消息的推送类型 | String | - | 0代表单点推送，1代表网点群发，2代表全行群发 |
+| destId  | 推送的目的oid | String | - | - |
+| branch  | 网点 | String | - | - |
+| app  | 应用，传递的是要推送到的目的应用类型 | String/Array | - | - |
+| content  | 推送的消息内容 | Any | - | - |
 
 > **WebsocketManager Events**
 
