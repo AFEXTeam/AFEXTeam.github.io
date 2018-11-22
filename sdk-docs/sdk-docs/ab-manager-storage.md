@@ -9,7 +9,9 @@
 
 import { StorageManager } from "ab-manager-storage";
 import StorageName from "@/common/storage-manager/storage-name.js";
-Vue.use(StorageManager, StorageName);
+Vue.use(StorageManager, {
+    all: StorageName
+});
 ```
 
 2.使用：
@@ -23,7 +25,7 @@ StorageManager.setStore(key, value);
 例：
 
 ```js
-// 设置数据
+// 设置数据（设置前需要先将变量设为可修改）
 StorageManager.setStore("name", "daiqiang");
 // 获取数据
 let username = StorageManager.getStore("name");
@@ -33,7 +35,35 @@ StorageManager.removeStore("name");
 StorageManager.removeStore();
 ```
 
-> **StorageManager Events**
+3.设置可修改数据
+
+默认全局的数据不可修改，如需修改则需要将'要修改的变量名'设置为可修改。
+
+```js
+StorageManager.setAble(ableArray);
+// 例
+StorageManager.setAble(['tellerNum']);
+```
+
+也可以在初始化的时候设置可修改变量，如：
+
+```js
+import { StorageManager } from "ab-manager-storage";
+import StorageName from "@/common/storage-manager/storage-name.js";
+
+Vue.use(StorageManager, {
+  all: StorageName,
+  able: ['tellerNum']
+});
+```
+
+**参数**
+
+| 参数     | 类型 | 说明 | 默认值 |
+| -------- | --- | --- | --- |
+| ableArray | array | 可修改的数据列表 | - |
+
+**StorageManager Events**
 
 | 事件        | 说明               | 参数                                            |
 | :-----------: | :------------------: | :-------------: |
