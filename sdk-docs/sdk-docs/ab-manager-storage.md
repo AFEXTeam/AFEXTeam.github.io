@@ -9,9 +9,7 @@
 
 import { StorageManager } from "ab-manager-storage";
 import StorageName from "@/common/storage-manager/storage-name.js";
-Vue.use(StorageManager, {
-    all: StorageName
-});
+Vue.use(StorageManager, StorageName);
 ```
 
 2.使用：
