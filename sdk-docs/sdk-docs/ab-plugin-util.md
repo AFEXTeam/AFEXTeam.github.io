@@ -1,12 +1,10 @@
 # ab-plugin-util@前端应用工具类
 
-## FileUtil工具类
-
 1.引入
 -------------
 ```js
-import { FileUtil } from "ab-plugin-util"
-import { CodecUtil} from "ab-plugin-util"
+import { FileUtil } from "ab-plugin-util"//FileUtil 文件操作工具类
+import { CodecUtil} from "ab-plugin-util"//CodecUtil 编码工具类
 ```
 
 2.使用
