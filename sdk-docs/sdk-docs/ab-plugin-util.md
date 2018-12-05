@@ -3,14 +3,14 @@
 ## FileUtil工具类
 
 1.引入
-
+-------------
 ```js
 import { FileUtil } from "ab-plugin-util"
 import { CodecUtil} from "ab-plugin-util"
 ```
 
 2.使用
-
+-------------
 readClientFile
 ```js
 let filePath = "C:/test.log"
@@ -27,14 +27,16 @@ desHandler
  let key = "3132333435363738"; //DES秘钥
  let result = await CodecUtil.desHandler(source, mode, key);
 ```
-3、事件
+
+3.事件
+-------------
 | 事件     | 说明 | 参数 |
 | -------- | --- | --- |
 | readClientFile | 内嵌程序 | filePath : String  offset : Number size : Number |
 | desHandler | 编码工具 | source : String  mode : Number size : key |
 
 
-4、参数说明
+4.参数说明
 -------------
 ### FileUtil
 #### readClientFile
