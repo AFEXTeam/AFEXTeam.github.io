@@ -1,94 +1,117 @@
-# ab-manager-hotkeys@热键管理
+# ab-manager-hotkey@热键管理
 
-js绑定热键组合，方便操作，提升效率
+用于注册及删除全局热键、交易级热键和组件热键。
 
-1.引入
+### 1.引入
 
 ```js
-import { HotKeys } from "ab-manager-hotkeys";
+import { Hotkey } from 'ab-manager-hotkey'
+Vue.use(Hotkey);
 ```
 
-2.绑定快捷键
+### 2.注册
 
 ```js
-HotKeys.createHotKeys(shortcut, callback);
+this.$setHotkey(name, data[, scope]);
 ```
 
-3.解除快捷键绑定
+**注：只能使用此方法注册热键。**
 
-```js
-HotKeys.unbind(shortcut);
-```
-
-例：
-```js
+#### 2.1 全局及交易级热键注册
+```html
+// App.vue
+<template>
+    <div id="app" v-hotkey="keymap"></div>
+</template>
 <script>
-    methods: {
-        /* 热键回调函数
-        *
-        * hotKeyFun(e, handler)其中参数无需修改
-        * e: 当前点击的event
-        * handler: 包括组合键的信息
-        */
-        hotKeyFun(e, handler) {
-            e.preventDefault();
-            switch (handler.key) {
-                case "alt+1":
-                    console.log("按了" + handler.key); // "按了alt+1"
-                break;
-                case "alt+2":
-                    console.log("按了" + handler.key); // "按了alt+2"
-                break;
-            }
+export default {
+    data() {
+        return {
+            keymap: {}
         }
     },
     mounted() {
-        // 绑定
-        HotKeys.createHotKeys('alt+1,alt+2', this.hotKeyFun);
-
-        // 解绑
-        HotKeys.unbind('alt+1');
+        this.$setHotkey('keymap', {
+            'ctrl+e': function() {
+                // todo
+            }
+        }); // 在App.vue中可以省略scope参数
     }
+}
 </script>
 ```
-4.按区域绑定热键
 
+**注：**
+在非`App.vue`中注册全局及交易级热键需要添加`global/trade`字段。
 ```js
-HotKeys.createHotKeys(shortcut, scope, callback);
-
-HotKeys.setScope(scope); // 默认为所有
+this.$setHotkey(name, data, 'global');
 ```
 
-5.解绑某个区域中的所有热键
-
-```js
-HotKeys.deleteScope(scope);
+#### 2.2 注册组件级热键
+```html
+// 当前vue文件
+<template>
+    <div>
+        <aui-input v-hotkey='keymap'></aui-input>
+    </div>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            keymap: {}
+        }
+    },
+    mounted() {
+        this.$setHotkey('keymap', {
+            'ctrl+e': function() {
+                // todo
+            }
+        });
+    }
+}
+</script>
 ```
 
-例：
+### 3. 删除热键
 
 ```js
-HotKeys.createHotKeys('alt+1', 'scope1', function(e, handler){
-    console.log('在scope1中按下了alt+1');
-});
-
-HotKeys.setScope('scope1');
-// 解绑
-// HotKeys.deleteScope('scope1');
+this.$delHotkey(name, shortcut[, scope]);
 ```
 
-6.过滤节点
+**注：只能用此方法删除热键。**
 
-> 默认`INPUT`、`SELECT`、`TEXTAREA`默认不做处理；如果想要在这些元素中生效，需要设置`HotKeys.filter`返回`true`。
-
-```js
-HotKeys.filter(function(event){
-  return true;
-});
+```html
+// 当前vue文件
+<template>
+    <div>
+        <aui-input v-hotkey='keymap'></aui-input>
+    </div>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            keymap: {}
+        }
+    },
+    mounted() {
+        this.$setHotkey('keymap', {
+            'ctrl+e': function() {
+                // todo
+            }
+        });
+        
+        // 删除
+        this.$delHotkey('keymap', 'ctrl+e');
+    }
+}
+</script>
 ```
 
-| 参数     | 类型 | 说明 |
-| -------- | --- | --- |
-| shortcut | string | 快捷键组合 |
-| scope(可选) | string | 指定热键绑定的区域 |
-| callback | function | 快捷键绑定的函数 |
+| 参数 | 类型 | 可选值 | 说明 |
+| ------- | ------ | ------------------ |
+| name | string | - | 指令绑定的变量名 |
+| data | object | - | 热键短语及执行的方法 |
+| shortcut | string | - | 热键短语，如：'ctrl+e' |
+| scope(可选) | string | 'global', 'trade' | 热键作用域 |
