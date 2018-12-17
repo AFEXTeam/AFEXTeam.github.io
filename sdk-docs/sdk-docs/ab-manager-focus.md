@@ -36,16 +36,6 @@ this.focusManager.toggleFocus();
 this.focusManager.setFocus(ref);
 ```
 
-6.设置焦点贪婪
-
-只需要在需要焦点贪婪的组件上添加`greedy`即可。
-
-```js
-<template>
-    <aui-input greedy v-model="inputValue"></aui-input>
-</template>
-```
-
 例：
 ```js
 <template>
@@ -54,6 +44,16 @@ this.focusManager.setFocus(ref);
 <script>
     this.focusManager.setFocus("accountInput");
 </script>
+```
+
+6.设置焦点贪婪
+
+只需要在需要焦点贪婪的组件上添加`greedy`即可。
+
+```js
+<template>
+    <aui-input greedy v-model="inputValue"></aui-input>
+</template>
 ```
 
 
