@@ -46,18 +46,38 @@ this.focusManager.setFocus(ref);
 </script>
 ```
 
-6.设置焦点贪婪
-
-只需要在需要焦点贪婪的组件上添加`greedy`即可。
+6.设置/移除焦点贪婪
 
 ```js
-<template>
-    <aui-input greedy v-model="inputValue"></aui-input>
-</template>
+this.focusManager.setGreedy(refNames[, scope]);
+this.focusManager.removeGreedy(refNames[, scope]);
 ```
 
 
-| 参数     | 类型 | 说明 |
-| -------- | --- | --- |
-| this | object(Vue实例) | 当前作用域 |
-| ref | 声明在`<template>`中的ref属性 | 当前作用域 |
+```html
+<template>
+    <aui-input ref="input_1" v-model="inputValue"></aui-input>
+</template>
+<script>
+    import { FocusManager } from 'ab-manager-focus'
+
+    export default {
+        data() {
+            return {
+                focusManager: ''
+            }
+        },
+        mounted() {
+            this.focusManager.setGreedy('input_1');
+            this.focusManager.removeGreedy('input_1');
+        }
+    }
+</script>
+```
+
+| 参数     | 类型 | 默认值 | 说明 |
+| -------- | --- | --- | --- |
+| this | object(VueComponent) | this | 当前作用域 |
+| ref | string | - | 声明在组件上的ref属性 |
+| refNames | string/array | - | 一个ref字符串或者多个ref字符串组成的数组 |
+| scope | object(VueComponent) | this | attach方法传入的作用域 |
