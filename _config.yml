@@ -2,7 +2,7 @@ theme: jekyll-theme-cayman
 
 title: AFEX赞同前端团队
 
-is_project_page:true
+is_project_page: true
 
 github:
   repository_url: https://github.com/AFEXTeam/AFEXTeam.github.io
