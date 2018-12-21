@@ -10,7 +10,7 @@ import { Printer } from "./ab-plugin-device-printer";
 
 > **解析aft文件**
 
-### 详情请参考[打印文件(AFT)说明](https://github.com/AFEXTeam/AFEXTeam.github.io/blob/master/sdk-docs/sdk-docs/%E6%89%93%E5%8D%B0%E6%96%87%E4%BB%B6(AFT)%E8%AF%B4%E6%98%8E.docx "打印文件(AFT)说明")
+### 详情请参考[打印文件(AFT)说明](https://github.com/AFEXTeam/AFEXTeam.github.io/blob/master/sdk-docs/sdk-docs/%E6%89%93%E5%8D%B0%E6%96%87%E4%BB%B6(AFT)%E8%AF%B4%E6%98%8E.docx")
 #### parseAft
 ```js
     let path = "www/Test.aft";
