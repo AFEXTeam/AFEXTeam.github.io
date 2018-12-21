@@ -41,3 +41,16 @@ import { Printer } from "./ab-plugin-device-printer";
 |事件名|说明|参数|
 |-----|:----:|:----:|
 |parseAft|解析aft文件|path:String aft文件路径；mapping:Map 映射mapping；controlParam：Map 打印相关控制参数|
+
+#### printPreviewXmlString
+```js
+    let xml = await Printer.parseAft(path, map, controlParam);
+    let result = await Printer.printPreviewXmlString(xml);
+```
+
+
+**Events promise函数**
+
+|事件名|说明|参数|
+|-----|:----:|:----:|
+|printPreviewXmlString|打印预览xmlString|xml:String xml字符串|
