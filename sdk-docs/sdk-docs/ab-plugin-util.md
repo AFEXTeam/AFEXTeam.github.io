@@ -96,11 +96,11 @@ desHandler
 | localPath | 本地文件地址 | String | null
 #### clientFileCreate
 | 事件     | 说明 | 类型 | 默认值 |
-| -------- | --- | --- | --- | --- |
+| -------- | --- | --- | --- |
 | filePath | 文件路径 | String | null|
 #### clientFileDelete
 | 事件     | 说明 | 类型 | 默认值 |
-| -------- | --- | --- | ---| --- |
+| -------- | --- | --- | ---|
 | filePath | 文件路径 | String | null|
 #### clientFileExist
 | 事件     | 说明 | 类型 | 默认值 |
