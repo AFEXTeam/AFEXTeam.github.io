@@ -1,10 +1,12 @@
 # ab-plugin-util@前端应用工具类
 
+## FileUtil工具类
+
 1.引入
 -------------
 ```js
-import { FileUtil } from "ab-plugin-util"//FileUtil 文件操作工具类
-import { CodecUtil} from "ab-plugin-util"//CodecUtil 编码工具类
+import { FileUtil } from "ab-plugin-util"
+import { CodecUtil} from "ab-plugin-util"
 ```
 
 2.使用
@@ -18,6 +20,47 @@ FileUtil.readClientFile(filePath,...[offset,size]).then(res=>{
     // todo
 });
 ```
+
+downloadFile
+```js
+let remotePath = "C:/test.log"
+let localPath = "C:/"
+FileUtil.downloadFile(remotePath,localPath).then(res=>{
+    // todo
+    console.log(res.downloadFile)
+});
+```
+
+clientFileCreate
+```js
+import {FileUtil} from 'ab-plugin-util'
+let result = await FileUtil.clientFileCreate(filePath);
+```
+
+clientFileDelete
+```js
+import {FileUtil} from 'ab-plugin-util'
+let result = await FileUtil.clientFileDelete(filePath);
+```
+
+clientFileExist
+```js
+import {FileUtil} from 'ab-plugin-util'
+let result = await FileUtil.clientFileExist(filePath);
+```
+
+clientFileReadLines
+```js
+import {FileUtil} from 'ab-plugin-util'
+let result = await FileUtil.clientFileReadLines(filePath,startLines,endLines);
+```
+
+clientFileRename
+```js
+import {FileUtil} from 'ab-plugin-util'
+let result = await FileUtil.clientFileRename(oldName,newName);
+```
+
 desHandler
 ```js
  let source = "123456";
@@ -26,11 +69,14 @@ desHandler
  let result = await CodecUtil.desHandler(source, mode, key);
 ```
 
+
+
 3.事件
 -------------
 | 事件     | 说明 | 参数 |
 | -------- | --- | --- |
 | readClientFile | 内嵌程序 | filePath : String  offset : Number size : Number |
+| downloadFile | 文件下载 | remotePath : String  localPath : String |
 | desHandler | 编码工具 | source : String  mode : Number size : key |
 
 
@@ -43,6 +89,29 @@ desHandler
 | filePath | 文件路径 | String | null|
 | offset | 偏移量 | Number | 0(不偏移) 非必输
 | size | 读取量 | Number |-1(全部读取) 非必输
+#### downloadFile
+| 事件     | 说明 | 类型 | 默认值
+| -------- | --- | --- | ---|
+| remotePath | 服务端文件地址 | String | null
+| localPath | 本地文件地址 | String | null
+#### clientFileCreate
+| 事件     | 说明 | 类型 | 默认值 |
+| -------- | --- | --- | --- | --- |
+| filePath | 文件路径 | String | null|
+#### clientFileDelete
+| 事件     | 说明 | 类型 | 默认值 |
+| -------- | --- | --- | ---| --- |
+| filePath | 文件路径 | String | null|
+#### clientFileExist
+| 事件     | 说明 | 类型 | 默认值 |
+| -------- | --- | --- | ---|
+| filePath | 文件路径 | String | null|
+#### clientFileReadLines
+| 事件     | 说明 | 类型 | 默认值
+| -------- | --- | --- | ---|
+| filePath | 文件路径 | String | null |
+| startLines | 起始行数 | String | null |
+| endLines | 终结行数 | String | null |
 -------------
 ### CodecUtil
 #### desHandler
