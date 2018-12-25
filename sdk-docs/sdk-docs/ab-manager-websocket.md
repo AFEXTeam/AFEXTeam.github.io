@@ -60,7 +60,7 @@ let ABConfig = {
         scope: '',
         destId: '',
         branch: '',
-        app: '',
+        app: [''],
         content: ''
     });
 ```
