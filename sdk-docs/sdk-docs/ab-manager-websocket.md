@@ -119,7 +119,7 @@ let ABConfig = {
 | scope  | 消息的推送类型 | String | - | 0代表单点推送，1代表网点群发，2代表全行群发 |
 | destId  | 推送的目的oid | String | - | - |
 | branch  | 网点 | String | - | - |
-| app  | 应用，传递的是要推送到的目的应用类型 | String/Array | - | - |
+| app  | 应用，传递的是要推送到的目的应用类型 | Array | - | - |
 | content  | 推送的消息内容 | Any | - | - |
 
 > **WebsocketManager Events**
