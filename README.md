@@ -12,6 +12,4 @@
 
 ###  📱 [移动组件库演示文档](https://afexteam.github.io/aui-m-demo/)
 
-***
-
-### 👥 [赞同移动开发团队](https://amapteam.github.io/)
+### 👥 [赞同移动开发团队](https://afexteam.github.io/abc-mobile/)
