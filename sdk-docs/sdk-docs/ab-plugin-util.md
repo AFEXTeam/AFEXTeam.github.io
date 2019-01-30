@@ -61,6 +61,14 @@ import {FileUtil} from 'ab-plugin-util'
 let result = await FileUtil.clientFileRename(oldName,newName);
 ```
 
+writeClientFile
+```js
+ let filePath = "E:\\testdownload\\test.txt"; //文件路径
+ let content = "123456"; //写入文件的内容
+ let append = "true"; //是否追加写入
+ let result = await CodecUtil.writeClientFile(filePath, content, append);
+```
+
 desHandler
 ```js
  let source = "123456";
@@ -77,6 +85,7 @@ desHandler
 | -------- | --- | --- |
 | readClientFile | 内嵌程序 | filePath : String  offset : Number size : Number |
 | downloadFile | 文件下载 | remotePath : String  localPath : String |
+| writeClientFile | 写客户端文件 | filePath : String  content : String append : boolean |
 | desHandler | 编码工具 | source : String  mode : Number size : key |
 
 
@@ -96,11 +105,11 @@ desHandler
 | localPath | 本地文件地址 | String | null
 #### clientFileCreate
 | 事件     | 说明 | 类型 | 默认值 |
-| -------- | --- | --- | --- |
+| -------- | --- | --- | --- | --- |
 | filePath | 文件路径 | String | null|
 #### clientFileDelete
 | 事件     | 说明 | 类型 | 默认值 |
-| -------- | --- | --- | ---|
+| -------- | --- | --- | ---| --- |
 | filePath | 文件路径 | String | null|
 #### clientFileExist
 | 事件     | 说明 | 类型 | 默认值 |
@@ -112,6 +121,12 @@ desHandler
 | filePath | 文件路径 | String | null |
 | startLines | 起始行数 | String | null |
 | endLines | 终结行数 | String | null |
+#### writeClientFile
+| 事件     | 说明 | 类型 | 默认值
+| -------- | --- | --- | ---|
+| filePath | 文件路径 | String | null |
+| content | 写入文件的内容 | String | null |
+| append | 是否追加写入 | boolean | null |
 -------------
 ### CodecUtil
 #### desHandler
