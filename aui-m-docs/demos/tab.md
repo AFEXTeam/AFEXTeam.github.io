@@ -1,6 +1,6 @@
----
+<!-- ---
 nav: zh-CN
----
+--- -->
 
 
 ### Tab
@@ -10,7 +10,7 @@ nav: zh-CN
 #### 演示
 
  <div style="width:377px;height:667px;display:inline-block;border:1px dashed #ececec;border-radius:5px;overflow:hidden;">
-   <iframe src="http://192.9.200.185:50003/aui-m/#/component/tab" width="375" height="667" border="0" frameborder="0"></iframe>
+   <iframe src="https://afexteam.github.io/aui-m-demo/#/component/tab" width="375" height="667" border="0" frameborder="0"></iframe>
  </div>
 
 #### demo 代码
