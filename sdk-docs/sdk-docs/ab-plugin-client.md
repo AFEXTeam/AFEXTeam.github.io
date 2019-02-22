@@ -145,6 +145,60 @@ Client.closeSubscribe(()=>{
 });
 ```
 
+> **创建客户端文件夹**
+
+```js
+let dir = "E:\\file.txt"
+Client.makeClientDirectory(dir).then(res => {
+  // todo
+  console.log(res.makeClientDirectory)
+});
+```
+
+> **写入客户端资源文件**
+
+```js
+let fileType = "properties"
+let filePath = "E:\\aui.properties"
+let charset = "utf-8"
+let key = "Platform/MINA"
+let value = "true"
+Client.writeClientResourceFile(fileType,filePath,charset,key,value).then(res => {
+  // todo
+  console.log(res.writeClientResourceFile)
+});
+```
+
+> **获取客户端启动参数**
+
+```js
+let argsType = "end" 返回最后一个入参
+let argsType = "true" 返回符合规则的入参
+其他的值和默认不传一样返回所有的值
+Client.getClientStartParameters(...[argsType]).then(res => {
+  // todo
+  console.log(res.clientStartParameters)
+});
+```
+
+> **打开客户端系统配置页**
+
+```js
+Client.openSysPage().then(res => {
+  // todo
+  console.log(res.clientStartParameters)
+});
+```
+
+> **设置客户端通讯url**
+
+```js
+import { Client } from 'ab-plugin-client'
+let name="hg";
+let httpUrlList = ["http://3.1.11.76:8867"];
+let wsUrlList = ["ws://127.0.0.1:51003/websocket"];
+let result = await Client.setCommPreference(name,httpUrlList,wsUrlList);
+```
 **Events promise 函数**
 
 | 事件          |      说明      | 参数 |
@@ -164,3 +218,8 @@ Client.closeSubscribe(()=>{
 | getClientNowSystemTime   | 获取客户端当前系统时间    |  format   |
 | getClientFileLastModified   | 获取客户端文件最后修改时间    |  filePath   |
 | closeSubscribe   | 关闭客户端事件订阅    |  fun:Function 关闭时触发的回调事件 |
+| makeClientDirectory   | 创建客户端文件夹    |  dir   |
+| writeClientResourceFile   | 写入客户端资源文件    |  fileType:客户端文件类型（目前只支持properties格式的文件）,filePath:客户端文件地址,charset:客户端文件编码,key:客户端资源文件的key,value:客户端资源文件的value |
+| getClientStartParameters   | 获取客户端启动参数    |  argsType   |
+| openSysPage   | 打开客户端系统配置页    |    |
+| setCommPreference   | 设置客户端通讯url    |   name：oid名称,httpUrlList:abs的http的url,wsUrlList:abs的websocket消息推送url |
