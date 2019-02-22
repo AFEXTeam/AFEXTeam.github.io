@@ -23,7 +23,6 @@
         // todo
     });
 ```
-
 > **获取abc 监听adssocket端口**
 
 ```js
@@ -48,6 +47,14 @@
     });
 ```
 
+> **根据传入外设类型获取外设配置**
+
+```js
+    DeviceSetting.getOneTypeDeviceConfig(adsType,adsQuery).then(res=>{
+        // todo
+    });
+```
+
 > **订阅客户端原生层当ads启动后回调的js方法**
 
 ```js
@@ -60,6 +67,14 @@
 ```js
     DeviceSetting.deviceUnsubscribe()
 ```
+
+> **设置外设ads链接url**
+
+```js
+  import { DeviceSetting } from 'ab-plugin-device'
+  let adsUrl="http://127.0.0.1:3306";
+  let result = await DeviceSetting.setAdsPreference(adsUrl);
+```
 **Events promise函数**
 
 |事件名|说明|参数|
@@ -70,3 +85,5 @@
 |isAdsConnect|判断ads是否启动成功|-|
 |deviceSubscribe|订阅客户端原生层当ads启动后回调的js方法|fun:订阅消息的回调函数|
 |deviceUnsubscribe|取消订阅客户端原生层当ads启动后回调的js方法|-|
+|getOneTypeDeviceConfig|根据传入外设类型获取外设配置|adsType:String 外设类型;adsQuery:String 是否从ads获取外设配置信息|
+|setAdsPreference|设置外设ads链接url|adsUrl:ads的链接url|
