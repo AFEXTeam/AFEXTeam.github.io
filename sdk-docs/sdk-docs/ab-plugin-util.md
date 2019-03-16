@@ -7,16 +7,34 @@
 ```js
 import { FileUtil } from "ab-plugin-util"
 import { CodecUtil} from "ab-plugin-util"
+import { ExportUtil} from "ab-plugin-util"
 ```
 
 2.使用
 -------------
+listToExcel
+```js
+let data = [
+    ["1","name","sexual","age"],
+    ["2","huangguan","male","30"],
+    ["3","liudexin","male","29"]
+]
+let sheetName = "sheet1" 非必输
+let fontName = "宋体" 非必输
+let fontSize = 10 非必输
+let fontColor = black 非必输
+let backgroundColor = -1 默认无色 非必输
+let path = "D:\\test.xls"
+await ExportUtil.listToExcel(data,path,sheetName,fontSize,fontName,fontColor,backgroundColor);
+```
+
 readClientFile
 ```js
 let filePath = "C:/test.log"
+let encoding = "gbk"
 let offset = 0
 let size = -1
-FileUtil.readClientFile(filePath,...[offset,size]).then(res=>{
+FileUtil.readClientFile(filePath,encoding,...[offset,size]).then(res=>{
     // todo
 });
 ```
@@ -66,7 +84,14 @@ writeClientFile
  let filePath = "E:\\testdownload\\test.txt"; //文件路径
  let content = "123456"; //写入文件的内容
  let append = "true"; //是否追加写入
- let result = await CodecUtil.writeClientFile(filePath, content, append);
+ let result = await FileUtil.writeClientFile(filePath, content, append);
+```
+
+uploadFile
+```js
+ let localPath = "C:\\test.txt"; //文件路径
+ let remotePath = "/home/abs/fileContainer/test.txt"; //写入文件的内容
+ let result = await FileUtil.uploadFile(localPath, remotePath);
 ```
 
 desHandler
@@ -127,6 +152,11 @@ desHandler
 | filePath | 文件路径 | String | null |
 | content | 写入文件的内容 | String | null |
 | append | 是否追加写入 | boolean | null |
+#### uploadFile
+| 事件     | 说明 | 类型 | 默认值
+| -------- | --- | --- | ---|
+| localPath | 本地文件路径 | String | null |
+| remotePath | 服务端文件路径 | String | null |
 -------------
 ### CodecUtil
 #### desHandler
@@ -135,3 +165,15 @@ desHandler
 | source | 源字符串 | String |null
 | mode | 加密标志 | String |"encrypt"加密 "decrypt"解密
 | key | 秘钥 | String |null
+-------------
+### ExportUtil
+#### listToExcel
+| 事件     | 说明 | 类型 | 默认值
+| -------- | --- | --- | ---|
+| data | 传入数据 | List |null
+| path | 路径 | String |null
+| sheetName | 内部sheet名称 | String |sheet1 非必输
+| fontSize | 字体大小 | String |10 非必输
+| fontName | 字体名称 | String |宋体 非必输
+| FontColor | 字体颜色 | String |RED、Black、Yellow三种 默认黑色 非必输
+| backgroundColor | 背景颜色 | String |RED、Black、Yellow三种 默认无色 非必输
