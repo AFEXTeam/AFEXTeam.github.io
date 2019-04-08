@@ -94,6 +94,15 @@ uploadFile
  let result = await FileUtil.uploadFile(localPath, remotePath);
 ```
 
+getClientFileAsSavePath
+```js
+let type = ["jpeg","txt","doc"];
+let behavior = "open"
+let result = await FileUtil.getClientFileAsSavePath(type,behavior);
+    //or
+let result = await FileUtil.getClientFileAsSavePath();
+```
+
 desHandler
 ```js
  let source = "123456";
@@ -102,7 +111,12 @@ desHandler
  let result = await CodecUtil.desHandler(source, mode, key);
 ```
 
-
+cryptoHandler
+```js
+let filePath = "C://test.txt"
+let cryptoType = "SM3" //"SM3" SM3方式加密 "Md5"获取文件md5
+let result = await CodecUtil.cryptoHandler(filePath,cryptoType)
+```
 
 3.事件
 -------------
@@ -157,6 +171,11 @@ desHandler
 | -------- | --- | --- | ---|
 | localPath | 本地文件路径 | String | null |
 | remotePath | 服务端文件路径 | String | null |
+#### getClientFileAsSavePath
+| 事件     | 说明 | 类型 | 默认值
+| -------- | --- | --- | ---|
+| fileTypesList | 支持打开文件的类型 | List | null |
+| behavior | 模态对话框打开样式 | String | "open" |
 -------------
 ### CodecUtil
 #### desHandler
@@ -165,6 +184,12 @@ desHandler
 | source | 源字符串 | String |null
 | mode | 加密标志 | String |"encrypt"加密 "decrypt"解密
 | key | 秘钥 | String |null
+-------------
+#### cryptoHandler
+| 事件     | 说明 | 类型 | 默认值
+| -------- | --- | --- | ---|
+| filePath | 文件路径 | String |null
+| cryptoType | 编码类型 | String |"SM3"加密 "Md5"编码值
 -------------
 ### ExportUtil
 #### listToExcel
