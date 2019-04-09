@@ -78,6 +78,6 @@ this.focusManager.removeGreedy(refNames[, scope]);
 | 参数     | 类型 | 默认值 | 说明 |
 | -------- | --- | --- | --- |
 | this | object(VueComponent) | this | 当前作用域 |
-| ref | string | - | 声明在组件上的ref属性 |
+| ref | string/number | - | 声明在组件上的ref属性或组件的位置下标 |
 | refNames | string/array | - | 一个ref字符串或者多个ref字符串组成的数组 |
 | scope | object(VueComponent) | this | attach方法传入的作用域 |
