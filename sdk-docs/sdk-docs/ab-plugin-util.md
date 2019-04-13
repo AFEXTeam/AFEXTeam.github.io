@@ -19,13 +19,18 @@ let data = [
     ["2","huangguan","male","30"],
     ["3","liudexin","male","29"]
 ]
+let head = [
+    ["日期", "配送信息", "", "", "", ""],
+    ["", "姓名", "地址", "", "", ""],
+    ["", "", "省份", "市区", "地址", "邮编"]
+]
 let sheetName = "sheet1" 非必输
 let fontName = "宋体" 非必输
 let fontSize = 10 非必输
 let fontColor = black 非必输
 let backgroundColor = -1 默认无色 非必输
 let path = "D:\\test.xls"
-await ExportUtil.listToExcel(data,path,sheetName,fontSize,fontName,fontColor,backgroundColor);
+await ExportUtil.listToExcel(data,path,head,sheetName,fontSize,fontName,fontColor,backgroundColor);
 ```
 
 readClientFile
@@ -118,6 +123,14 @@ let cryptoType = "SM3" //"SM3" SM3方式加密 "Md5"获取文件md5
 let result = await CodecUtil.cryptoHandler(filePath,cryptoType)
 ```
 
+clientFileBase64Handler
+```js
+let path = "D:/text.png"
+let transferType = "decode" //"decode"base64转换成文件 "encode"文件转换成base64
+let base64 = "XXXX" //base64字符串
+let result = await CodecUtil.clientFileBase64Handler(path,transferType,base64)
+```
+
 3.事件
 -------------
 | 事件     | 说明 | 参数 |
@@ -190,6 +203,13 @@ let result = await CodecUtil.cryptoHandler(filePath,cryptoType)
 | -------- | --- | --- | ---|
 | filePath | 文件路径 | String |null
 | cryptoType | 编码类型 | String |"SM3"加密 "Md5"编码值
+-------------
+#### clientFileBase64Handler
+| 事件     | 说明 | 类型 | 默认值
+| -------- | --- | --- | ---|
+| path | 文件路径 | String |null
+| transferType | 编码类型 | String |"decode"base64转换成文件 "encode"文件转换成base64
+| base64 | base64字符串 | String |null
 -------------
 ### ExportUtil
 #### listToExcel
