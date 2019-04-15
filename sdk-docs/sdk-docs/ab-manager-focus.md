@@ -75,9 +75,33 @@ this.focusManager.removeGreedy(refNames[, scope]);
 </script>
 ```
 
+7.设置事件控制
+
+7.1 初始化事件控制
+
+```js
+// main.js
+import { EventControl } from 'ab-manager-focus'
+Vue.use(EventControl);
+```
+
+7.2 修改事件控制状态
+
+```js
+this.$setBlockStatus(state, focusScope);
+```
+
+**例：**
+```js
+// this.focusManager = new FocusManager();
+this.$setBlockStatus(false, this.focusManager);
+```
+
 | 参数     | 类型 | 默认值 | 说明 |
 | -------- | --- | --- | --- |
 | this | object(VueComponent) | this | 当前作用域 |
 | ref | string/number | - | 声明在组件上的ref属性或组件的位置下标 |
 | refNames | string/array | - | 一个ref字符串或者多个ref字符串组成的数组 |
 | scope | object(VueComponent) | this | attach方法传入的作用域 |
+| state | boolean | - | 修改 |
+| focusScope | object | - | 当前的focsuManager实例 |
