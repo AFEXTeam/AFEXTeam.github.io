@@ -75,6 +75,13 @@
   let adsUrl="http://127.0.0.1:3306";
   let result = await DeviceSetting.setAdsPreference(adsUrl);
 ```
+
+> **清空外设配置信息**
+
+```js
+    DeviceSetting.clearDeviceList()
+```
+
 **Events promise函数**
 
 |事件名|说明|参数|
