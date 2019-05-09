@@ -36,4 +36,4 @@ Vue.use(TradeFlowManager[,options]);
 | -------- | --- | --- |
 | name | string | 打开页面的名字(与ab-manager-pages中的stepName对应) |
 | scope | object(Vue实例) | 页面宿主(动态组件所在的Vue实例，通常为this) |
-| options | boolean | 是否记录日志到abc |
+| options.callback | function | 事件埋点的回调，默认一个信息参数 |
