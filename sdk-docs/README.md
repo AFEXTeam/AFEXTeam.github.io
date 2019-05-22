@@ -1,7 +1,7 @@
 # AgreeSDK docs
 
-```bash
-    npm i -g docute-cli
+``` bash
+npm i -g docute-cli
 
-    docute ./agree-sdk-docs
+docute ./agree-sdk-docs
 ```

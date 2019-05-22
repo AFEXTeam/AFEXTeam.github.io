@@ -30,7 +30,7 @@ import { TradeFlowManager } from "ab-manager-trade-flow";
 Vue.use(TradeFlowManager[,options]);
 ```
 
-> 在每个交易的`main.js`引用一次即可，会记录交易中的“click”、“focus”和“blur”等事件触发的相关信息。
+> 在每个交易的`main.js`引用一次即可，会记录交易中的“点击”、“focus”和“blur”等事件触发的相关信息。
 
 | 参数     | 类型 | 说明 |
 | -------- | --- | --- |

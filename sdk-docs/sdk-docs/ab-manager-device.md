@@ -108,26 +108,6 @@ DeviceManager.getDevice({
 }).then(res => {
     // todo
 });
-
-// 虚拟外设调用 (需要设置config.js->ADConfig.VIRTUAL_DEVICE=true)
-// 外设参数
-let devParams = {
-    Type: "",
-    Method: "",
-    Args: "",
-    ReadTimeout: "",
-    WriteTimeout: "",
-    Key: "",
-    IsOccupy: "",
-    ListenPort: ""
-}
-// devType：Id(身份证) Ic(IC卡) Pin(密码键盘) Fp(指纹仪) UKey(U盾) Box(尾箱)
-DeviceManager.getDevice({
-    devType: "外设类型",
-    devParams: devParams
-}).then(res => {
-    // todo
-});
 ```
 > **DeviceManager Events**
 

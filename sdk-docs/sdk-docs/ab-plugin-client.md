@@ -196,9 +196,17 @@ Client.openSysPage().then(res => {
 import { Client } from 'ab-plugin-client'
 let name="hg";
 let httpUrlList = ["http://3.1.11.76:8867"];
-let wsUrlList = ["ws://127.0.0.1:51003/websocket"];
-let result = await Client.setCommPreference(name,httpUrlList,wsUrlList);
+let aarmUrlList = ["ws://127.0.0.1:51003/websocket"];
+let msgUrlList = ["ws://127.0.0.1:51004/websocket"];
+let result = await Client.setCommPreference(name,httpUrlList,aarmUrlList,msgUrlList);
 ```
+
+> **窗口关闭按钮是否可以关闭**
+
+```js
+let result = await Client.setShellClosable(true)
+```
+
 **Events promise 函数**
 
 | 事件          |      说明      | 参数 |
@@ -222,4 +230,6 @@ let result = await Client.setCommPreference(name,httpUrlList,wsUrlList);
 | writeClientResourceFile   | 写入客户端资源文件    |  fileType:客户端文件类型（目前只支持properties格式的文件）,filePath:客户端文件地址,charset:客户端文件编码,key:客户端资源文件的key,value:客户端资源文件的value |
 | getClientStartParameters   | 获取客户端启动参数    |  argsType   |
 | openSysPage   | 打开客户端系统配置页    |    |
-| setCommPreference   | 设置客户端通讯url    |   name：oid名称,httpUrlList:abs的http的url,wsUrlList:abs的websocket消息推送url |
+| setCommPreference   | 设置客户端通讯url    |   name：oid名称, httpUrlList:aase的http的url, aarmUrlList:aarm的websocket资源更新 urlmsgUrlList:amessage的websocket消息推送url |
+| getClientStartParameters   | 获取客户端启动参数    |  argsType   |
+| setShellClosable        | 窗口关闭按钮是否可以关闭 |  ifClose  false 不可以关闭|true 可以关闭|

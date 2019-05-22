@@ -88,14 +88,14 @@ Vue.use(EventControl);
 7.2 修改事件控制状态
 
 ```js
-this.$setBlockStatus(state, focusScope);
+this.$setBlockStatus(state);
 ```
 
 **例：**
 ```js
-// this.focusManager = new FocusManager();
-this.$setBlockStatus(false, this.focusManager);
+this.$setBlockStatus(false);
 ```
+
 
 | 参数     | 类型 | 默认值 | 说明 |
 | -------- | --- | --- | --- |

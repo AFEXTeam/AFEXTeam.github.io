@@ -60,7 +60,7 @@ let ABConfig = {
         scope: '',
         destId: '',
         branch: '',
-        app: [''],
+        app: '',
         content: ''
     });
 ```
@@ -115,11 +115,11 @@ let ABConfig = {
 | pongTimeOut      | ping消息发送之后,10秒内没收到后端消息便会认为连接断开 | Numebr | 10000 | - |
 | reconnectTimeOut | 尝试重连的间隔时间 | Number  | 2000 | - |
 | pingMsg          | ping消息内容 | String  | "heartbeat" | "heartbeat" |
-| forbidReconnect  | 是否进行重连操作 | Boolean | false | - |
+| forbidReconnect  | 是否进行重连操作 | Boolean | true | - |
 | scope  | 消息的推送类型 | String | - | 0代表单点推送，1代表网点群发，2代表全行群发 |
 | destId  | 推送的目的oid | String | - | - |
 | branch  | 网点 | String | - | - |
-| app  | 应用，传递的是要推送到的目的应用类型 | Array | - | - |
+| app  | 应用，传递的是要推送到的目的应用类型 | String/Array | - | - |
 | content  | 推送的消息内容 | Any | - | - |
 
 > **WebsocketManager Events**
