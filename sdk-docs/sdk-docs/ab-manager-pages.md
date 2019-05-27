@@ -20,7 +20,7 @@
     export default [
         {
             name: stepName,
-            page: () => import(/* webpackChunkName: chunkName */+ url)
+            page: url
         }
     ]
 ```
@@ -32,11 +32,11 @@
     export default [
         {
             name: 'Step1',
-            page: () => import(/* webpackChunkName: "step1" */'./modules/T10001/Step1')
+            page: 'FCClient/modules/T10001/Step1.vue'
         },
         {
             name: 'Step2',
-            page: () => import(/* webpackChunkName: "step2" */'./modules/T10001/Step2')
+            page: 'FCClient/modules/T10001/Step2.vue')
         }
     ]
 ```
