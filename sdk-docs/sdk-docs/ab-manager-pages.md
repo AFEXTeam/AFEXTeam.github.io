@@ -36,7 +36,7 @@
         },
         {
             name: 'Step2',
-            page: 'FCClient/modules/T10001/Step2.vue')
+            page: 'FCClient/modules/T10001/Step2.vue'
         }
     ]
 ```
