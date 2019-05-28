@@ -1,3 +1,5 @@
+# ab-plugin-keybord@虚拟键盘
+
 在App.vue文件中的input需要绑定v-keyboard=”‘englishOnly’”自定义指令（或者v-keyboard=”‘englishOnlyNumber’”更改为默认为数字键盘）
 ```js
 <template>
