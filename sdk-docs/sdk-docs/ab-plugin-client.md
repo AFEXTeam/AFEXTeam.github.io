@@ -8,6 +8,20 @@ import { Client } from 'ab-plugin-client';
 
 2.事件方法使用说明
 
+> **设置主题色**
+
+```js
+let theme = '#FFF'
+let result = await Client.setThemePreference(theme);
+
+```
+
+> **获取主题色**
+
+```js
+let result = await Client.getThemePreference();
+```
+
 > **关闭客户端**
 
 ```js
@@ -211,6 +225,8 @@ let result = await Client.setShellClosable(true)
 
 | 事件          |      说明      | 参数 |
 | ------------- | :------------: | :--: |
+| getThemePreference   |   获取主题色   |  -   |
+| setThemePreference   |   设置主题色   |  themecolor:String主题色16进制色码   |
 | closeClient   |   关闭客户端   |  -   |
 | setMinimized  |  最小化客户端  |  -   |
 | setMaxmized   |  最大化客户端  |  -   |
