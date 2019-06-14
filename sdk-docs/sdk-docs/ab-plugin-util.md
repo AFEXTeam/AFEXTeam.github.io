@@ -19,10 +19,49 @@ let data = [
     ["2","huangguan","male","30"],
     ["3","liudexin","male","29"]
 ]
-let head = [
-    ["日期", "配送信息", "", "", "", ""],
-    ["", "姓名", "地址", "", "", ""],
-    ["", "", "省份", "市区", "地址", "邮编"]
+let head =  head = [
+        {"label":"A"},
+        {"label":"B"},
+        {
+          "label":"C",
+          children: [
+            {"label":"D"},
+            {"label":"E"},
+            {"label":"F"},
+            {
+              "label":"G",
+              children: [
+                {"label": "H"},
+                {"label": "I"},
+                {
+                  "label": "J",
+                  children: [
+                    {"label": "K"}
+                  ]
+                },
+                {
+                  "label": "L",
+                  children: [
+                    {"label": "M"}
+                  ]
+                }                
+              ]
+            },
+            {
+              "label":"N",
+              children: [
+                {"label": "O"},
+                {"label": "P"},
+                {
+                  "label": "Q",
+                  children: [
+                    {"label": "R"}
+                  ]
+                }               
+              ]
+            }
+          ]
+        }
 ]
 let sheetName = "sheet1" 非必输
 let fontName = "宋体" 非必输
@@ -40,6 +79,13 @@ let encoding = "gbk"
 let offset = 0
 let size = -1
 FileUtil.readClientFile(filePath,encoding,...[offset,size]).then(res=>{
+    // todo
+});
+```
+readClientFileBase64
+```js
+let filePath = "C:/test.log"
+FileUtil.readClientFileBase64(filePath).then(res=>{
     // todo
 });
 ```
@@ -131,6 +177,12 @@ let base64 = "XXXX" //base64字符串
 let result = await CodecUtil.clientFileBase64Handler(path,transferType,base64)
 ```
 
+getFileLength
+```js
+let path = "D:/test.zip"
+let type = "M"
+await FileUtil.getFileLength(path,type);
+```
 3.事件
 -------------
 | 事件     | 说明 | 参数 |
@@ -189,6 +241,11 @@ let result = await CodecUtil.clientFileBase64Handler(path,transferType,base64)
 | -------- | --- | --- | ---|
 | fileTypesList | 支持打开文件的类型 | List | null |
 | behavior | 模态对话框打开样式 | String | "open" |
+#### getFileLength
+| 事件     | 说明 | 类型 | 默认值
+| -------- | --- | --- | ---|
+| path | 文件路径 | String | null |
+| type | 类型 | String | "B"：单位Byte,"K"：单位KB,"M"：单位MB,"G"：单位：GB |
 -------------
 ### CodecUtil
 #### desHandler
