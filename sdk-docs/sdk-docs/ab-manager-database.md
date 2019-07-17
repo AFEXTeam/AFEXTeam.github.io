@@ -1,11 +1,11 @@
-# ab-manager-indexeddb@结构化数据存取
+# ab-manager-database@结构化数据存取
 
 用于客户端存储大量结构化数据(包括，文件 / blobs)
 
 1. 引入
 
 ```js
-import { IndexedDBManager } from ab-manager-database;
+import { IndexedDBManager } from 'ab-manager-database';
 ```
 
 2. 初始化
