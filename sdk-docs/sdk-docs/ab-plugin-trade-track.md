@@ -1,71 +1,26 @@
-# ab-plugin-trade-track@日志链路追踪
+# ab-manager-trade-track@交易链路追踪
+
+交易链路追踪管理器，根据不同渠道进行交易的链路追踪管理。
 
 1.引入
 
 ```js
-import { TradeTrack } from "./ab-plugin-trade-track";
+import { TradeTrack } from "./ab-manager-trade-track";
 ```
 
 2.事件方法的使用
-
-> **申请tradeId**
-
-#### getTradeId
+> **申请traceId**
 ```js
-let result = await TradeTrack.getTradeId("T1001");
-this.tradeId1 = result.tradeId;
+let channelId = "01";
+let result = TradeTrack.getTraceId(channelId);
 ```
-```js
-let result = await TradeTrack.getTradeId("T1001");
-this.tradeId1 = result.tradeId;
+`channelId`用来设置渠道标识，需要在申请traceId时传入，例如：
 
-let childResult = await TradeTrack.getTradeId("T1001",this.tradeId1)
-this.childTradeId = childResult.tradeId
-```
+**渠道标识编号**
 
-**Events promise函数**
-
-|事件名|说明|参数|
+|channelId|说明|平台|
 |-----|:----:|:----:|
-|getTradeId|申请tradeId|tradeName:String 交易名称;parentTradeId:String 非必输，父交易tradeId|
-
-> **根据tradeId申请requestId**
-
-#### getRequestId
-```js
-let result1 = await TradeTrack.getRequestId(this.tradeId1);
-this.requestId1 = result1.requestId;
-```
-
-**Events promise函数**
-
-|事件名|说明|参数|
-|-----|:----:|:----:|
-|getRequestId|根据tradeId申请RequestId|tradeId:String 交易tradeId|
-
-> **根据tradeId申请requestId**
-
-#### getRequestId
-```js
-let result1 = await TradeTrack.getRequestId(this.tradeId1);
-this.requestId1 = result1.requestId;
-```
-
-**Events promise函数**
-
-|事件名|说明|参数|
-|-----|:----:|:----:|
-|getRequestId|根据tradeId申请RequestId|tradeId:String 交易tradeId|
-
-> **清除tradeId**
-
-#### remove
-```js
-let result1 = await TradeTrack.remove(this.tradeId1);
-```
-
-**Events promise函数**
-
-|事件名|说明|参数|
-|-----|:----:|:----:|
-|remove|清除tradeId|tradeId:String 交易tradeId|
+|01|柜面渠道|Java-PC|
+|02|自助渠道|.net-PC|
+|03|厅堂渠道|移动|
+|04|管理V端渠道|Web-PC|
