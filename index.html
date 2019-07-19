@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>赞同 AB5.0 前端产品及解决方案</title>
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/animate.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="page">
+      <div class="page-top" style="position: relative;">
+        <div class="logo-div" onmouseenter="hidenMenuList()">
+          <img src="./img/logo.png" />
+        </div>
+        <div class="menu-div" id="menu-div"></div>
+        <div id="show-menu">
+          <div class="arrow" id="arrow"></div>
+          <ul class="dropdown-menu" id="menu-list"> </ul>
+        </div>
+      </div>
+      <!-- Swiper -->
+      <div onmouseenter="hidenMenuList()" class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- AB5.0前端平台 -->
+          <div class="swiper-slide">
+            <div class="swiper-content">
+              <h1 class="title">AB5.0前端平台</h1>
+              <p class="desc">使用现代化的前端技术开发高性能应用。丰富的微产品和解决方案为企业客户打造业界领先的金融科技服务。
+              </p>
+              <div class="btn-div">
+                <button>立即使用
+                  <img src="./img/arrow-right.png" />
+                </button>
+                <p class="btn-desc">使用AB5.0前端平台开始构建你的应用</p>
+              </div>
+            </div>
+            <div class="swiper-img"><img src="./img/02banner.png" /></div>
+          </div>
+          <!-- 移动解决方案 -->
+          <div class="swiper-slide">
+            <div class="swiper-content">
+              <h1 class="title">移动解决方案</h1>
+              <p class="desc">智慧网点平台、预约排队、智能叫号、客户分流、预填单、自助发卡、自助交易、手持终端、智能营销、金融超市、远程协助、网点管理、数据分析。</p>
+              <div class="btn-div">
+                <button>了解详情
+                  <img src="./img/arrow-right.png" />
+                </button>
+                <p class="btn-desc">点击了解更多详细移动解决方案</p>
+              </div>
+            </div>
+            <div class="swiper-img"><img src="./img/01banner.png" /></div>
+          </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <!-- 跨平台统一开发 -->
+      <div class="page-content pic01">
+        <div class="content-div right">
+          <h4 class="content-title">跨平台统一开发</h4>
+          <p class="content-desc">你可以使用同一份代码编译成不同目标文件分别在 Web、Android 和 iOS 平台上运行。原生的组件和模块在不同平台中有着不同的实现，但是它们都提供了相同的接口。</p>
+        </div>
+      </div>
+      <!-- EMM移动管理平台 -->
+      <div class="page-content pic02">
+        <div class="content-div left">
+          <h4 class="content-title">EMM移动管理平台</h4>
+          <p class="content-desc">EMM 解决企业移动智能终端统一配置问题、设备丢失问题、数据泄露问题、App安全获取问题，文档共享问题、邮件安全问题等。为企业提供全方位解决方案，帮助企业打造高效和安全的移动化办公体系。</p>
+        </div>
+      </div>
+      <!-- 企业小程序平台 -->
+      <div class="page-content pic03">
+        <div class="content-div right">
+          <h4 class="content-title">企业小程序平台</h4>
+          <p class="content-desc">赞同企业小程序 AEMP (Agree Enterprise Mini Program) 平台是一个专业的小程序开发运营平台，构建小程序化场景开发、云化部署、开放式API服务调用。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <!-- Swiper JS -->
+  <script src="js/swiper.min.js"></script>
+  <script src="js/swiper.animate.min.js"></script>
+  <script src="js/menu.js"></script>
+  <!-- Initialize Swiper -->
+  <script>
+    var checkedMenuIndex = -1;//所选中菜单 -1-未选中 0-产品 1-解决方案
+    $(function () {
+      var msg = ""
+      // menulist是js/menu.js定义的全局变量
+      menulist.forEach((el, index) => {
+        msg += "<a href='#' onmouseenter='showMenuList(" + index + ")'>" + el.menuGroupName + "</a>"
+      });
+      $("#menu-div").html(msg);
+    });
+
+    var mySwiper = new Swiper('.swiper-container', {
+      speed: 2000,
+      autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,//当人工切换时是否禁止autoplay
+      },
+      grabCursor: true,//变成手掌形状
+
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      on: {
+        init: function () {
+          swiperAnimateCache(this); //隐藏动画元素 
+          this.emit('slideChangeTransitionEnd');//在初始化时触发一次slideChangeTransitionEnd事件
+        },
+        slideChangeTransitionEnd: function () {
+          swiperAnimate(this); //每个slide切换结束时运行当前slide动画
+          this.slides.eq(this.activeIndex).find('.ani').removeClass('ani');//动画只展示一次
+        }
+      }
+    });
+
+    // 显示菜单
+    function showMenuList(index) {
+      //所选中菜单 -1-未选中 0-产品 1-解决方案 防止重复选中
+      if (checkedMenuIndex != index) {
+        setTimeout(function () {
+          getMenuData(index);
+        }, 100);
+      }
+    };
+    //获取菜单数据
+    function getMenuData(index) {
+      var msg = ""
+      // menulist是js/menu.js定义的全局变量
+      for (var i = 0; i < menulist.length; i++) {
+        if (index == i) {
+          if (menulist[i].list.length > 0) {
+            menulist[i].list.forEach((el) => {
+              msg += "<li><a onmouseenter='showMenuList(" + index + ")' href=" + el.url + ">" + el.name + "</a></li>"
+            });
+          } else {
+            msg = "<li>暂无数据</li>";
+          }
+        }
+      }
+      $("#menu-list").html(msg);
+
+      // 展示Menu菜单
+      $("#show-menu").css("display", "block");
+      // 修改样式
+      if (index == 1) {//产品
+        $("#arrow").css("margin-left", "70px");
+        $("#menu-list").css("margin-left", "70px");
+      } else {
+        $("#arrow").css("margin-left", "0");
+        $("#menu-list").css("margin-left", "0");
+      }
+      checkedMenuIndex = index;//所选中菜单 -1-未选中 0-产品 1-解决方案
+    };
+    // 隐藏菜单
+    function hidenMenuList() {
+      console.log("触发");
+      checkedMenuIndex = -1;//所选中菜单 -1-未选中 0-产品 1-解决方案
+      $("#show-menu").css("display", "none");
+    };
+  </script>
+</body>
+
+</html>
